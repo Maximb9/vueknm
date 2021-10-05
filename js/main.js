@@ -15,17 +15,7 @@ $(function() {
     });
 })
 
-let app = new Vue({
-    el: '#app',
-    data: {
-        message: ''
-    },
-    mounted() {
-        axios
-            .get('education.json')
-            .then(response => (this.message = response.data));
-    }
-})
+
 
 
 

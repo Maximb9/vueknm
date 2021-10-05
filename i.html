@@ -2,44 +2,91 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto&display=swap"
-        rel="stylesheet">
-    <!-- <link rel="stylesheet" href="css/style.min.css"> -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto&display=swap"
+    rel="stylesheet">
+  <!-- <link rel="stylesheet" href="css/style.min.css"> -->
 </head>
 
 <body>
-    <div id="app">
-        <ul>
-            <li>{{ message[2].name }}</li>
-            <li>{{ message[1].age }}</li>
-        </ul>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.11.1/sass.min.js"></script>
+  <div id="app">
+    <input type="radio" name="tt" value="1" v-model="test">
+    <input type="radio" name="tt" value="2" v-model="test">
+    <input type="radio" name="tt" value="3" v-model="test">
+    {{ test }}
+    <ul>
+      <li v-for="messages in message" v-if="messages.id == test">{{ messages.name }}</li>
+    </ul>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.11.1/sass.min.js"></script>
 
-    <script>
-        let app = new Vue({
-            el: '#app',
-            data: {
-                message: ''
-            },
-            mounted() {
-                axios
-                    .get('test.json')
-                    .then(response => (this.message = response.data));
-            }
-        })
-    </script>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        test: 2,
+        message: ''
+      },
+      mounted() {
+        axios
+          .get('test.json')
+          .then(response => (this.message = response.data));
+      },
+      method: {
+        testClick() {
+
+        }
+      }
+    })
+  </script>
 
 </body>
 
 </html>
 
 <!-- v-if="isActive === '2'" -->
+
+
+
+Судя по всему, вы пытаетесь отобразить список элементов с вкладками, используемыми для фильтрации. Есть много способов
+добиться этого; Я бы предложил использовать вычисленное свойство .
+
+Назовите переменную, filterкоторая представляет текущий фильтр (и текущую выбранную вкладку).
+
+Создайте вычисляемое свойство (назовем его courses), которое будет возвращать ваш список курсов для отображения в виде
+карточек (отфильтрованных на основе filterпеременной).
+
+new Vue({
+el: '#tab',
+data: {
+filter: 'все',
+},
+computed: {
+courses() {
+if (this.filter === 'все') {
+// Return all courses here
+} else {
+// Return filtered list of courses (based on this.filter)
+}
+}
+},
+})
+Поскольку coursesэто вычисляемое свойство, его значение будет обновляться при каждом filterизменении.
+
+Теперь в вашем HTML вы захотите использовать цикл (если вы еще этого не сделали) для отображения ваших курсов. Вам нужно
+будет перебрать вычисленное coursesсвойство, которое мы установили ранее.
+
+<li @click="filter = 'все'">все</li>
+<li @click="filter = 'Курсы'">Курсы</li>
+Put your other tabs here
+
+<div v-for="course in courses">
+  Put your course card HTML here
+</div>
