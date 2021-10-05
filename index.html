@@ -67,7 +67,7 @@
         </div>
     </header>
     <main>
-        <section class="education">
+        <section class="education" id="app">
             <div class="container">
                 <div class="education__inner">
                     <h1 class="education__title">Назначенное обучение</h1>
@@ -87,7 +87,7 @@
                             </li>
                         </ul>
                     </nav>
-                    <div class="education__content" id="app">
+                    <div class="education__content">
                         <a class="education__content-card" href="#">
                             <img v-bind:src=message[0].image class="education__content-image" alt="">
                             <div class="education__progress">
@@ -207,79 +207,77 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <article class="news">
-            <div class="container">
-                <div class="news__inner">
-                    <h2 class="news__info">Новости</h2>
-                    <div class="news__posts">
-                        <a class="news__post" href="#">
-                            <img class="news__image" src="images/hack.jpg"
-                                alt="Хакеры атаковали пользователей Facebook">
-                            <button class="news__btn-it" type="submit">В мире IT</button>
-                            <button class="news__btn-facebook" type="submit">В мире IT</button>
-                            <h2 class="news__title">Хакеры атаковали пользователей Facebook</h2>
-                            <p class="news__text">
-                                Эксперты Group-IB предупредили Facebook о масштабной хакерской атаке на пользователей
-                                соцсети в 84 странах.
-                            </p>
-                            <div class="news__box">
-                                <div class="news__like">
-                                    <img class="news__like-image" src="images/heart.svg" alt="heart">
-                                    <div class="news__like-sum">24</div>
+            <article class="news">
+                <div class="container">
+                    <div class="news__inner">
+                        <h2 class="news__info">Новости</h2>
+                        <div class="news__posts">
+                            <a class="news__post" href="#">
+                                <img v-bind:src=message[8].image class="news__image"
+                                    alt="Хакеры атаковали пользователей Facebook">
+                                <button class="news__btn-it" type="submit">{{message[8].tags[0]}}</button>
+                                <button class="news__btn-facebook" type="submit">{{message[8].tags[1]}}</button>
+                                <h2 class="news__title">{{message[8].name}}</h2>
+                                <p class="news__text">
+                                    {{message[8].description}}
+                                </p>
+                                <div class="news__box">
+                                    <div class="news__like">
+                                        <img class="news__like-image" src="images/heart.svg" alt="heart">
+                                        <div class="news__like-sum">{{message[8].likes}}</div>
+                                    </div>
+                                    <div class="news__message">
+                                        <img class="news__like-image" src="images/message.svg" alt="message">
+                                        <div class="news__like-sum">{{message[8].comments}}</div>
+                                    </div>
                                 </div>
-                                <div class="news__message">
-                                    <img class="news__like-image" src="images/message.svg" alt="message">
-                                    <div class="news__like-sum">2</div>
+                            </a>
+                            <a class="news__post" href="#">
+                                <img v-bind:src=message[9].image class="news__image"
+                                    alt="Данные сотен российских компаний из Trello">
+                                <button class="news__btn-it" type="submit">{{message[9].tags[0]}}</button>
+                                <h2 class="news__title">{{message[9].name}} </h2>
+                                <p class="news__text">
+                                    {{message[9].description}}
+                                </p>
+                                <div class="news__box">
+                                    <div class="news__like">
+                                        <img class="news__like-image" src="images/heart.svg" alt="heart">
+                                        <div class="news__like-sum">{{message[9].likes}}</div>
+                                    </div>
+                                    <div class="news__message">
+                                        <img class="news__like-image" src="images/message.svg" alt="message">
+                                        <div class="news__like-sum">{{message[9].comments}}</div>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                        <a class="news__post" href="#">
-                            <img class="news__image" src="images/trello.jpg"
-                                alt="Данные сотен российских компаний из Trello">
-                            <button class="news__btn-it" type="submit">В мире IT</button>
-                            <h2 class="news__title">Данные сотен российских компаний из Trello </h2>
-                            <p class="news__text">
-                                Эксперты по безопасности Infosecurity a Softline company нашли в интернете тысячи досок
-                                Trello с корпоративными данными...
-                            </p>
-                            <div class="news__box">
-                                <div class="news__like">
-                                    <img class="news__like-image" src="images/heart.svg" alt="heart">
-                                    <div class="news__like-sum">32</div>
+                            </a>
+                            <a class="news__post" href="#">
+                                <img v-bind:src=message[10].image class="news__image"
+                                    alt="Топ-25 самых востребованных профессий">
+                                <button class="news__btn-it" type="submit">{{message[10].tags[0]}}</button>
+                                <button class="news__btn-facebook" type="submit">{{message[10].tags[1]}}</button>
+                                <button class="news__btn-top" type="submit">{{message[10].tags[2]}}</button>
+                                <h2 class="news__title">{{message[10].name}}</h2>
+                                <p class="news__text">
+                                    {{message[10].description}}
+                                </p>
+                                <div class="news__box">
+                                    <div class="news__like">
+                                        <img class="news__like-image" src="images/heart.svg" alt="heart">
+                                        <div class="news__like-sum">{{message[10].likes}}</div>
+                                    </div>
+                                    <div class="news__message">
+                                        <img class="news__like-image" src="images/message.svg" alt="message">
+                                        <div class="news__like-sum">{{message[10].comments}}</div>
+                                    </div>
                                 </div>
-                                <div class="news__message">
-                                    <img class="news__like-image" src="images/message.svg" alt="message">
-                                    <div class="news__like-sum">10</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="news__post" href="#">
-                            <img class="news__image" src="images/profession.jpg"
-                                alt="Топ-25 самых востребованных профессий">
-                            <button class="news__btn-it" type="submit">В мире IT</button>
-                            <button class="news__btn-facebook" type="submit">Profession</button>
-                            <button class="news__btn-top" type="submit">Топ</button>
-                            <h2 class="news__title">Топ-25 самых востребованных профессий</h2>
-                            <p class="news__text">
-                                Dice Insights снова обратился к данным компании Burning Glass, которая анализирует рынок
-                                труда США, чтобы узнать...
-                            </p>
-                            <div class="news__box">
-                                <div class="news__like">
-                                    <img class="news__like-image" src="images/heart.svg" alt="heart">
-                                    <div class="news__like-sum">10</div>
-                                </div>
-                                <div class="news__message">
-                                    <img class="news__like-image" src="images/message.svg" alt="message">
-                                    <div class="news__like-sum">7</div>
-                                </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </article>
+            </article>
+        </section>
+
     </main>
     <footer class="footer">
         <div class="footer__inner">
@@ -295,15 +293,31 @@
         let app = new Vue({
             el: '#app',
             data: {
-                message: ''
+                message: '',
             },
+
             mounted() {
                 axios
                     .get('education.json')
-                    .then(response => (this.message = response.data));
+                    .then(response => (this.message = response.data))
             }
         })
     </script>
 </body>
 
 </html>
+
+
+
+<!-- function getUserAccount() {
+    return axios.get('education.json');
+}
+function getUserPromission() {
+    return axios.get('news.json');
+}
+
+Promise.all([getUserAccount(), getUserPromission])
+.then(function(result) {
+    const acct = result[0];
+    const perm = result[1]
+}); -->
