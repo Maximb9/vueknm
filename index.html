@@ -73,7 +73,7 @@
                     <h1 class="education__title">Назначенное обучение</h1>
                     <nav class="menu-tab">
                         <ul class="menu-tab__list">
-                            <li class="menu-tab__item menu-tab__item--all" @click="isSelect('0')">
+                            <li class="menu-tab__item menu-tab__item--all active" @click="isSelect('0')">
                                 <a class="menu-tab__link" href="#">Все <span class="menu-tab__add">8</span></a>
                             </li>
                             <li class="menu-tab__item menu-tab__item--cours" @click="isSelect('1')">
@@ -299,7 +299,6 @@
             },
 
             mounted() {
-                // ('menu__list').first().addClass(classActive)
                 axios
                     .get('education.json')
                     .then(response => (this.message = response.data))
