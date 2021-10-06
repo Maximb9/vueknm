@@ -88,7 +88,7 @@
                         </ul>
                     </nav>
                     <div class="education__content">
-                        <a class="education__content-card" href="#" v-if="isActive === '1'" @click="isSelect('0')">
+                        <a class="education__content-card" href="#" v-if="isActive === '1'">
                             <img v-bind:src=message[0].image class="education__content-image" alt="">
                             <div class="education__progress">
                                 <div class="education__progress-cours">{{ message[0].type }}</div>
@@ -294,34 +294,15 @@
             el: '#app',
             data: {
                 message: '',
-                isActive: '0'
-                // filter: 'все',
+                isActive: ''
             },
-            // methods: {
-            //     isSelect: function (num) {
-            //         this.isActive = num;
-            //     }
-            // },
-            // computed: {
-            //     course() {
-            //         if (this.filter === 'все') {
-            //             return this.course
-            //         } else {
-
-            //         }
-            //     }
-            // },
 
             mounted() {
                 axios
                     .get('education.json')
                     .then(response => (this.message = response.data))
             },
-            // method: {
-            //     testClick() {
 
-            //     }
-            // }
             methods: {
                 isSelect: function (num) {
                     this.isActive = num;
@@ -332,18 +313,3 @@
 </body>
 
 </html>
-
-
-
-<!-- function getUserAccount() {
-    return axios.get('education.json');
-}
-function getUserPromission() {
-    return axios.get('news.json');
-}
-
-Promise.all([getUserAccount(), getUserPromission])
-.then(function(result) {
-    const acct = result[0];
-    const perm = result[1]
-}); -->
